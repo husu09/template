@@ -167,14 +167,13 @@ public class ThreadDemo {
 	@Test
 	public void synchronizedz() {
 		class MyRunnable implements Runnable {
-			AtomicInteger i = new AtomicInteger();
+			private int i = 0;
 			
 			@Override
 			public void run() {
 				synchronized (this) {
-					for(; i.get() < 1000000; i.incrementAndGet()) {
-					}
-					System.out.println(i);
+					for (int j = 0; j < 10; j++, i++);
+					System.out.println(this + " : " + Thread.currentThread().getName() + " : " + i);
 				}
 			}
 			
