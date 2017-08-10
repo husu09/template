@@ -73,24 +73,47 @@ public class ContainerDemo {
 	}
 	
 	private static class Person implements Delayed {
-
+		// 结束时间
+		private long endTime;
+		private String name;
+		
+		public Person(String name, long endTime) {
+			this.name = name;
+			this.endTime = endTime;
+		}
+		
 		@Override
 		public int compareTo(Delayed o) {
-			// TODO Auto-generated method stub
-			return 0;
+			Person p = (Person) o;
+			return this.endTime > p.endTime ? 1 : this.endTime < p.endTime ? -1 : 0;
 		}
 
 		@Override
 		public long getDelay(TimeUnit unit) {
-			// TODO Auto-generated method stub
-			return 0;
+			return unit.convert(endTime - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 		}
+
+		@Override
+		public String toString() {
+			return "Person [name=" + name + "]";
+		}
+		
 		
 	}
 	
+	/**
+	 * 延时队列
+	 */
 	@Test
 	public void delayQueue() {
 		DelayQueue<Person> queue = new DelayQueue<>();
-		
+		queue.put(new Person("p1", 1000 * 5 + System.currentTimeMillis()));
+		queue.put(new Person("p2", 1000 * 10 + System.currentTimeMillis()));
+		while (true) {
+			Person p = null;
+			if ((p = queue.poll()) != null) {
+				System.out.println(p);
+			}
+		}
 	}
 }
