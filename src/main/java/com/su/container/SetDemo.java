@@ -109,6 +109,48 @@ public class SetDemo {
 	}
 	
 	/**
+	 * 测试 set 集合中，equals 不等 hashcode 相同的情况
+	 */
+	@Test
+	public void equalsHashCode() {
+		class Person {
+			private String name;
+			
+			public Person(String name) {
+				this.name = name;
+			}
+			
+			@Override
+			public int hashCode() {
+				final int prime = 31;
+				int result = 1;
+				result = prime * result + ((name == null) ? 0 : name.hashCode());
+				return result;
+			}
+
+			@Override
+			public boolean equals(Object obj) {
+				return false;
+			}
+
+			@Override
+			public String toString() {
+				return "Person [name=" + name + "]";
+			}
+
+			
+			
+		}
+		HashSet<Person> set = new HashSet<>();
+		set.add(new Person("tom"));
+		set.add(new Person("tom"));
+		for (Iterator iterator = set.iterator(); iterator.hasNext();) {
+			Person person = (Person) iterator.next();
+			System.out.println(person);
+		}
+	}
+	
+	/**
 	 * treeSet 只能存储同一种类型的对象，并且该对象必须实现 Compareable 接口，实现对象之间的比较
 	 * 如两个对象的 compareTo 方法比较相等，新元素无法添加到时集合中 
 	 * 当通过 compareTo 比较两个对象相等时，它们的 equals 方法也应该返回 true

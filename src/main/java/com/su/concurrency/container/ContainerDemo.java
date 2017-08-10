@@ -2,6 +2,7 @@ package com.su.concurrency.container;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.Delayed;
@@ -17,12 +18,14 @@ import org.junit.Test;
  * 并发容器
  * CopyOnWriteArrayList 适用于读多写少，底层实现并发的原理是数组复制，当写操作时复制一份数据并修改，修改完成后改变集合的引用
  * ConcurrentHashMap 分段原理，默认分为16段
+ * ConcurrentLinkedQueue 高性能的无锁实现的队列，不是阻塞的
  * 阻塞队列 
  * ArrayBlockingQueue 有界队列，读写未分离
  * LinkedBlockingQueue 无界队列，读写分离效率高
  * SynchronousQueue 无缓冲队列，没有容量，当一个线程调用 take 方法等待时，另一个线程才能 add 
  * PriorityBlockingQueue 优先级队列，对象需要实现 Comparable 接口
  * DelayQueue 延时队列，元素需要实现 Delayed 接口
+ * 
  * ----------------------------------------------------------------
  * |	 | 可以把异常 | 返回布尔值 | 可以阻塞 | 设定等待时间                         |
  * | 入队 | add(e)   | offer(e) | put(e)  | offer(e, timeout, unit)|

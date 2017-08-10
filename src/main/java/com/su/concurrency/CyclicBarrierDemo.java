@@ -24,6 +24,7 @@ public class CyclicBarrierDemo implements Runnable{
 			barrier.await();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			// 当等待的线程中有一个中断，那么就不可以集合完毕，所以其它线程会抛出 BrokenBarrierException
 		} catch (BrokenBarrierException e) {
 			e.printStackTrace();
 		}
