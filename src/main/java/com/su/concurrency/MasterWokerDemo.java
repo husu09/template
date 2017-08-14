@@ -80,6 +80,11 @@ public class MasterWokerDemo {
 			return res;
 		}
 		
+		// 7提交任务
+		public void submit(Task task) {
+			tasks.offer(task);
+		}
+		
 	}
 	
 	/**
@@ -107,12 +112,29 @@ public class MasterWokerDemo {
 				if (t == null) break;
 				try {
 					//任务操作
-					Thread.sleep(1000);
+					Thread.sleep(500);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 				result.put(t.getId(), t.getPrice());
 			}
 		}
+	}
+	
+	public static void main(String[] args) {
+		Master m = new Master(new Woker(), 20);
+		for (int i = 1; i <= 100; i++) {
+			Task t = new Task();
+			t.setId(i);
+			t.setPrice(i);
+			m.submit(t);
+		}
+		m.execute();
+		long start = System.currentTimeMillis();
+		// 判断Worker任务是否完成
+		while (!m.isComplete());
+		long end = System.currentTimeMillis();
+		System.out.println("执行结果：" + m.getResult());
+		System.out.println("执行时间：" + (end - start));
 	}
 }
