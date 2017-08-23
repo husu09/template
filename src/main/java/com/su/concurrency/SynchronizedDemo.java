@@ -1,5 +1,7 @@
 package com.su.concurrency;
 
+import org.junit.Test;
+
 public class SynchronizedDemo implements Runnable {
 	
 	private static SynchronizedDemo instance = new SynchronizedDemo();
@@ -27,5 +29,17 @@ public class SynchronizedDemo implements Runnable {
 			e.printStackTrace();
 		}
 		System.out.println(instance.i);
+	}
+	/**
+	 * 测试能否锁住null
+	 * */
+	@Test
+	public void t1() {
+		System.out.println(null == null);
+		String a = null;
+		//java.lang.NullPointerException
+		synchronized (a) {
+			System.out.println("-");
+		}
 	}
 }
