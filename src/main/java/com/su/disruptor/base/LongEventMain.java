@@ -37,6 +37,7 @@ public class LongEventMain {
 
 		// 连接消费事件方法
 		disruptor.handleEventsWith(new LongEventHandler());
+		disruptor.handleEventsWith(new LongEventHandler());
 
 		// 启动
 		disruptor.start();
@@ -48,7 +49,7 @@ public class LongEventMain {
 		LongEventProducer producer = new LongEventProducer(ringBuffer);
 
 		ByteBuffer bb = ByteBuffer.allocate(8);
-		for (long l = 0; l < 100; l++) {
+		for (long l = 0; l < Long.MAX_VALUE; l++) {
 			bb.putLong(0, l);
 			producer.onData(bb);
 			//Thread.sleep(1000);

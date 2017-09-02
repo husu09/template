@@ -51,4 +51,36 @@ public class ConcurrentHashMapTest {
 		}
 		System.out.println(map);
 	}
+	
+	@Test
+	public void t2() {
+		// 如果是整型做为key,底部的hash算法应该和排序一致
+		Map<Long, Long> map = new ConcurrentHashMap<>();
+		for (Long i = 1L ; i <= 5000 ; i++) {
+			map.put(i, i);
+		}
+		for (Iterator<Long> it = map.keySet().iterator(); it.hasNext();) {
+			map.remove(it);
+			break;
+		}
+		System.out.println(map);
+	}
+	
+	@Test
+	public void t3() {
+		//删除map中的元素
+		Map<Integer,String> map = new ConcurrentHashMap<>();
+		map.put(1, "小明");
+		map.put(2, "小刚");
+		map.put(3, "小红");
+		/*for (Iterator<String> it = map.values().iterator(); it.hasNext();) {
+			it.next();
+			it.remove();
+		}*/
+		for (Iterator<Integer> it = map.keySet().iterator(); it.hasNext();) {
+		 	it.next();
+			it.remove();
+		}
+		System.out.println(map);
+	}
 }
