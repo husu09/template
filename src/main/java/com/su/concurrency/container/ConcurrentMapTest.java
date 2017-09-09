@@ -24,10 +24,18 @@ public class ConcurrentMapTest {
 	 * 测试 remove
 	 * */
 	@Test
-	public void tj() {
+	public void t1() {
 		ConcurrentHashMap<Integer, Long> map = new ConcurrentHashMap<>();
 		map.put(1, 1111L);
 		Long l = map.remove(1);
 		System.out.println(l);
+	}
+	
+	/**
+	 * 测试 remove
+	 * */
+	@Test
+	public void t2() {
+		System.out.println(new Long(1) != 1);
 	}
 }
