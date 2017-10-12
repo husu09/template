@@ -100,7 +100,7 @@ public class AssignmentTest {
 		Runnable r1 = new Runnable() {
 			@Override
 			public void run() {
-				while (!person.flag) {
+				while (person.age == 10) {
 					
 				}
 				System.out.println("r1 执行结束");
@@ -109,7 +109,7 @@ public class AssignmentTest {
 		Thread t1 = new Thread(r1);
 		t1.start();
 		Thread.sleep(1000);
-		person.flag = true;
+		person.age = 11;
 		t1.join();
 	}
 
