@@ -18,6 +18,8 @@ class SupervisingActor extends AbstractActor {
 			child.tell("fail", getSelf());
 		}).build();
 	}
+	
+	
 }
 
 class SupervisedActor extends AbstractActor {
