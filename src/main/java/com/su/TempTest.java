@@ -82,7 +82,7 @@ public class TempTest {
 	
 	@Test
 	public void t9() {
-		
+		System.out.println(String.valueOf(System.currentTimeMillis()).length());
 	}
 	
 }
