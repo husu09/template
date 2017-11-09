@@ -82,7 +82,8 @@ public class TempTest {
 	
 	@Test
 	public void t9() {
-		
+		System.out.println(0 - 0.45);
+		System.out.println(-0.45 -1.35);
 	}
 	
 }
