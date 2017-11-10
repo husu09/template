@@ -82,7 +82,12 @@ public class TempTest {
 	
 	@Test
 	public void t9() {
-		System.out.println(String.valueOf(System.currentTimeMillis()).length());
+//		System.out.println(String.valueOf(System.currentTimeMillis()).length());
+		for (int i = 1; i <= Integer.MAX_VALUE; i++) {
+			if (Integer.MAX_VALUE + i >= 0) {
+				System.out.println(Integer.MAX_VALUE + i);							
+			}
+		}
 	}
 	
 }
