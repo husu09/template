@@ -90,4 +90,29 @@ public class TempTest {
 		}
 	}
 	
+	/**
+	 * 测试 List.equals() 方法
+	 * */
+	@Test
+	public void t10() {
+		List<Integer> list1 = new ArrayList<>();
+		list1.add(1);
+		list1.add(2);
+		list1.add(3);
+		List<Integer> list2 = new ArrayList<>();
+		list2.add(1);
+		list2.add(2);
+		list2.add(3);
+		System.out.println(list1.equals(list2));
+		list2.add(4);
+		System.out.println(list1.equals(list2));
+		
+	}
+	
+	@Test
+	public void t11() {
+		System.out.println(1/100.0 * 100);
+	}
+	
+	
 }
