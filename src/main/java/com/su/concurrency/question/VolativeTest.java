@@ -21,7 +21,7 @@ public class VolativeTest implements Runnable{
 	public static void main(String[] args) throws InterruptedException {
 		VolativeTest t1 = new VolativeTest();
 		new Thread(t1).start();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		t1.stop();
 		
 	}
