@@ -53,10 +53,10 @@ public class DrawView {
 		//Dijkstra dijkstra = new Dijkstra();
 		//dijkstra.doSearch(drawData.encodePosition(0, 12), drawData.encodePosition(14, 1));
 	
-		Heuristic heuristic = new Heuristic();
-		heuristic.doSearch(drawData.encodePosition(0, 12), drawData.encodePosition(14, 1));
+		//Heuristic heuristic = new Heuristic();
+		//heuristic.doSearch(drawData.encodePosition(0, 12), drawData.encodePosition(14, 1));
 		
-		//AStar astar = new AStar();
-		//astar.doSearch(drawData.encodePosition(0, 12), drawData.encodePosition(14, 1));
+		AStar astar = new AStar();
+		astar.doSearch(drawData.encodePosition(0, 12), drawData.encodePosition(14, 1));
 	}
 }
